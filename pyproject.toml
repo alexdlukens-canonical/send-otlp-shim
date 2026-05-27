@@ -1,0 +1,21 @@
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "send-otlp-shim"
+version = "0.1.0"
+requires-python = ">=3.10"
+dependencies = [
+    "ops>=2.15.0",
+    "charmlibs-interfaces-otlp>=0.5.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0.0",
+]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+addopts = "-q"

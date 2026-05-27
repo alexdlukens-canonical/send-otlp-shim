@@ -1,0 +1,34 @@
+type: charm
+name: send-otlp-shim
+summary: Workloadless OTLP endpoint shim charm.
+description: |
+  A workloadless charm that provides a manually configured OTLP endpoint
+  to related applications using the OTLP relation interface.
+
+base: ubuntu@24.04
+platforms:
+  amd64:
+
+provides:
+  receive-otlp:
+    interface: otlp
+
+config:
+  options:
+    endpoint:
+      type: string
+      default: ""
+      description: OTLP endpoint URL including protocol and port.
+    insecure:
+      type: boolean
+      default: false
+      description: Allow insecure OTLP traffic for this endpoint.
+    telemetries:
+      type: string
+      default: logs,metrics,traces
+      description: Comma-separated supported telemetry types.
+
+parts:
+  charm:
+    plugin: charm
+    source: .
