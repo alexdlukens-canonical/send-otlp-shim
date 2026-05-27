@@ -32,3 +32,5 @@ parts:
   charm:
     plugin: charm
     source: .
+    charm-python-packages:
+      - charmlibs-interfaces-otlp>=0.5.0
